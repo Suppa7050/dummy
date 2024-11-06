@@ -34,7 +34,7 @@ class Application(models.Model):
     student_id = models.IntegerField()
     job = models.ForeignKey(Job, on_delete=models.CASCADE)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pending')
-
+    App_id=models.IntegerField(default=-1)
     def __str__(self):
         return f"Application {self.id} - {self.status}"
 

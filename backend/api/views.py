@@ -50,3 +50,18 @@ def apply_for_job(request, job_id):
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class UpdateApplicationStatusView(APIView):
+    def patch(self, request, pk):
+        try:
+            application = Application.objects.get(pk=pk)
+        except Application.DoesNotExist:
+            return Response({"error": "Application not found."}, status=status.HTTP_404_NOT_FOUND)
+        
+        # Update only the status field
+        application.status = request.data.get("status")
+        application.save()
+
+        return Response({"message": "Status updated successfully", "status": application.status}, status=status.HTTP_200_OK)
+    

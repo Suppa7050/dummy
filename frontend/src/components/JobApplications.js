@@ -8,7 +8,7 @@ function JobApplications() {
 
   useEffect(() => {
     // Fetch job applications from the Django API
-    axios.get('https://dummy-rk7g.onrender.com/api/job-applications/list/')
+    axios.get('http://localhost:8001/api/job-applications/list/')
       .then(response => {
         setApplications(response.data);
         setLoading(false);
