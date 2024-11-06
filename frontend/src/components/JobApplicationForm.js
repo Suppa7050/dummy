@@ -13,7 +13,7 @@ const JobApplicationForm = () => {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/jobs/${jobId}/questions/`);
+        const response = await axios.get(`https://dummy-rk7g.onrender.com/api/jobs/${jobId}/questions/`);
         setQuestions(response.data);
         setAnswers(response.data.map(() => '')); // Initialize answers array with empty strings
       } catch (error) {
@@ -36,7 +36,7 @@ const JobApplicationForm = () => {
     };
 
     try {
-      const response = await axios.post(`http://localhost:8000/api/jobs/${jobId}/apply/`, applicationData);
+      const response = await axios.post(`https://dummy-rk7g.onrender.com/api/jobs/${jobId}/apply/`, applicationData);
       setStatusMessage('Application submitted successfully!');
       console.log(response.data);
     } catch (error) {
